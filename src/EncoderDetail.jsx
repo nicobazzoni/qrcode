@@ -22,8 +22,9 @@ const EncoderDetail = () => {
   return (
     <div className="p-6 text-center">
       <h1 className="text-2xl font-bold mb-4">Encoder Info</h1>
+      <p><strong>Name:</strong> {data.title}</p>
       <p><strong>IP Address:</strong> {data.ipAddress}</p>
-      <p><strong>Port:</strong> {data.port}</p>
+      <p><strong>Ports:</strong> {data.port}</p>
       <p><strong>Circuit:</strong> {data.circuit}</p>
       <p><strong>Location:</strong> {data.location}</p>
       <p><strong>Purpose:</strong> {data.purpose}</p>

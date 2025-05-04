@@ -47,6 +47,7 @@ const EncoderForm = () => {
 
   return (
     <div className="p-6">
+        <h1> Create QR Code</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         {['title', 'ipAddress', 'port', 'circuit', 'location', 'purpose'].map((field) => (
           <input

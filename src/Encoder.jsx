@@ -1,6 +1,6 @@
 // src/components/EncoderForm.jsx
 import React, { useState } from 'react';
-import {client } from '../../sanityClient.js';
+import {client } from './sanityClient';
 import { QRCodeCanvas } from 'qrcode.react';
 
 const EncoderForm = () => {

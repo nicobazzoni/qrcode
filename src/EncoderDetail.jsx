@@ -1,7 +1,7 @@
 // src/EncoderDetail.jsx
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { client } from "./sanityClient"
+import  {client } from "./sanityClient"
 
 const EncoderDetail = () => {
   const { id } = useParams()

@@ -63,7 +63,7 @@ const EncoderForm = () => {
 
       {submitted && slug && (
         <div className="mt-6 text-center">
-          <QRCodeCanvas value={`http://qrcode-ma833xyha-nicobazzonis-projects.vercel.app/${slug}`} />
+          <QRCodeCanvas value={`http://qhttps://qrcode-phi-silk.vercel.app//${slug}`} />
           <p className="mt-2">Scan this QR code for encoder info.</p>
           <button onClick={() => window.print()} className="mt-4 p-2 bg-green-500 text-white">Print QR</button>
         </div>

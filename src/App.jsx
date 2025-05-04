@@ -7,8 +7,8 @@ function App() {
     <Router>
       <Routes>
       <Route path="/" element={<EncoderForm />} />
-    <Route path="/encoder" element={<EncoderForm />} />
-    <Route path="/encoder/:slug" element={<EncoderDetail />} />
+      <Route path="/encoder" element={<EncoderForm />} />
+      <Route path="/encoder/:slug" element={<EncoderDetail />} />
       </Routes>
     </Router>
   )

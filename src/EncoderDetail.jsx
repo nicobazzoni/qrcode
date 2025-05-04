@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { client } from "./sanityClient"
+import React from "react"
 
 const EncoderDetail = () => {
   const { slug } = useParams()

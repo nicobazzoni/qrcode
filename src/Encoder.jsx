@@ -1,6 +1,6 @@
 // src/components/EncoderForm.jsx
 import React, { useState } from 'react';
-import {client } from '/Users/nico/Desktop/apps/lighting-log-app/src/sanityClient.js';
+import {client } from '../../sanityClient.js';
 import { QRCodeCanvas } from 'qrcode.react';
 
 const EncoderForm = () => {
@@ -63,7 +63,7 @@ const EncoderForm = () => {
 
       {submitted && slug && (
         <div className="mt-6 text-center">
-          <QRCodeCanvas value={`http://localhost:5173/${slug}`} />
+          <QRCodeCanvas value={`http://qrcode-ma833xyha-nicobazzonis-projects.vercel.app/${slug}`} />
           <p className="mt-2">Scan this QR code for encoder info.</p>
           <button onClick={() => window.print()} className="mt-4 p-2 bg-green-500 text-white">Print QR</button>
         </div>

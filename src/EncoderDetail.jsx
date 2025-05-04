@@ -1,18 +1,20 @@
-// src/EncoderDetail.jsx
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import  {client } from "./sanityClient"
+import { client } from "./sanityClient"
 
 const EncoderDetail = () => {
-  const { id } = useParams()
+  const { slug } = useParams()
   const [data, setData] = useState(null)
 
   useEffect(() => {
     client
-      .getDocument(id)
+      .fetch(`*[_type == "encoder" && slug.current == $slug][0]`, { slug })
       .then((doc) => setData(doc))
-      .catch((err) => console.error("Error fetching encoder:", err))
-  }, [id])
+      .catch((err) => {
+        console.error("Error fetching encoder:", err)
+        setData(null)
+      })
+  }, [slug]) // ✅ fix here
 
   if (!data) return <p>Loading...</p>
 

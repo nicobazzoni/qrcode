@@ -8,7 +8,7 @@ function App() {
       <Routes>
       <Route path="/" element={<EncoderForm />} />
         <Route path="/encoder" element={<EncoderForm />} />
-        <Route path='/encoderdetail' element={<EncoderDetail/> } />
+        <Route path="/:slug" element={<EncoderDetail />} />
       </Routes>
     </Router>
   )

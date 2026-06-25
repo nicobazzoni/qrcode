@@ -1,16 +1,17 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import React from 'react'
-import EncoderForm from './Encoder'
-import EncoderDetail from './EncoderDetail'
+import React from "react"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import EquipmentList from "./EquipmentList"
+import EquipmentDetail from "./EquipmentDetail"
+
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
-      <Route path="/" element={<EncoderForm />} />
-      <Route path="/encoder" element={<EncoderForm />} />
-      <Route path="/encoder/:slug" element={<EncoderDetail />} />
+        <Route path="/" element={<Navigate to="/equipment" replace />} />
+        <Route path="/equipment" element={<EquipmentList />} />
+        <Route path="/equipment/:slug" element={<EquipmentDetail />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   )
 }
 

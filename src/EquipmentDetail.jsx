@@ -23,6 +23,31 @@ const components = {
         />
       )
     },
+
+    file: ({ value }) => {
+      if (!value?.asset?._ref) return null
+
+      const match = value.asset._ref.match(/^file-(.+)-(\w+)$/)
+      if (!match) return null
+
+      const id = match[1]
+      const extension = match[2]
+      const fileUrl = `https://cdn.sanity.io/files/kb6bkho8/production/${id}.${extension}`
+
+      return (
+        <div className="my-6 p-4 border rounded">
+          <p className="font-semibold">Attached file:</p>
+          <a
+            href={fileUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="text-blue-600 underline"
+          >
+            Open PDF / File
+          </a>
+        </div>
+      )
+    },
   },
 }
 

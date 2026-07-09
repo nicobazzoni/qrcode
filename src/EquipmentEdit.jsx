@@ -1,13 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { client } from "./sanityClient"
-
-const statuses = [
-  { label: "Active", value: "active" },
-  { label: "Needs Attention", value: "needs-attention" },
-  { label: "Out of Service", value: "out-of-service" },
-  { label: "In Storage", value: "in-storage" },
-]
+import EquipmentForm from "./EquipmentForm"
 
 const emptyForm = {
   title: "",
@@ -72,10 +66,6 @@ const EquipmentEdit = () => {
       .finally(() => setLoading(false))
   }, [slug])
 
-  const updateField = (field) => (event) => {
-    setForm((current) => ({ ...current, [field]: event.target.value }))
-  }
-
   const handleSubmit = async (event) => {
     event.preventDefault()
     setSaving(true)
@@ -108,87 +98,36 @@ const EquipmentEdit = () => {
 
   return (
     <main className="min-h-screen bg-slate-950 px-4 py-8 text-slate-100">
-      <form
-        className="mx-auto max-w-3xl rounded-[2rem] border border-slate-800 bg-white p-6 text-slate-950 shadow-2xl shadow-cyan-950/30"
+      <div className="mx-auto mb-4 flex max-w-3xl flex-wrap items-center justify-between gap-3">
+        <Link className="text-sm font-semibold text-cyan-200 underline" to="/equipment">
+          ← All QR Codes
+        </Link>
+        <Link className="text-sm font-semibold text-cyan-200 underline" to={`/equipment/${slug}`}>
+          View page
+        </Link>
+      </div>
+
+      <section className="mx-auto mb-5 max-w-3xl">
+        <p className="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300">
+          Edit QR Metadata
+        </p>
+        <h1 className="mt-2 text-3xl font-bold">{form.title || slug}</h1>
+      </section>
+
+      {error && <p className="mx-auto mb-4 max-w-3xl rounded-xl bg-rose-100 p-3 text-rose-800">{error}</p>}
+      {message && <p className="mx-auto mb-4 max-w-3xl rounded-xl bg-emerald-100 p-3 text-emerald-800">{message}</p>}
+
+      <EquipmentForm
+        canSubmit={canSave}
+        form={form}
+        onChange={setForm}
         onSubmit={handleSubmit}
-      >
-        <div className="mb-6 flex flex-wrap items-start justify-between gap-3">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-700">
-              Edit QR Metadata
-            </p>
-            <h1 className="mt-2 text-3xl font-bold">{form.title || slug}</h1>
-          </div>
-          <Link className="font-semibold text-cyan-700 underline" to={`/equipment/${slug}`}>
-            View page
-          </Link>
-        </div>
-
-        {error && <p className="mb-4 rounded-xl bg-rose-100 p-3 text-rose-800">{error}</p>}
-        {message && <p className="mb-4 rounded-xl bg-emerald-100 p-3 text-emerald-800">{message}</p>}
-
-        <div className="grid gap-4 md:grid-cols-2">
-          <TextField label="Title" value={form.title} onChange={updateField("title")} required />
-
-          <label className="block">
-            <span className="text-sm font-semibold text-slate-700">Status</span>
-            <select
-              className="mt-1 w-full rounded-xl border border-slate-300 p-3"
-              value={form.status}
-              onChange={updateField("status")}
-            >
-              {statuses.map((status) => (
-                <option key={status.value} value={status.value}>
-                  {status.label}
-                </option>
-              ))}
-            </select>
-          </label>
-
-          <TextField label="Location" value={form.location} onChange={updateField("location")} />
-          <TextField label="Department" value={form.department} onChange={updateField("department")} />
-          <TextField label="Contact Name" value={form.contactName} onChange={updateField("contactName")} />
-          <TextField label="Contact Email" type="email" value={form.contactEmail} onChange={updateField("contactEmail")} />
-        </div>
-
-        <label className="mt-4 block">
-          <span className="text-sm font-semibold text-slate-700">Quick Instructions</span>
-          <textarea
-            className="mt-1 min-h-32 w-full rounded-xl border border-slate-300 p-3"
-            value={form.quickInstructions}
-            onChange={updateField("quickInstructions")}
-            placeholder="Short operational notes, troubleshooting, or who to call."
-          />
-        </label>
-
-        <div className="mt-4 grid gap-4 md:grid-cols-2">
-          <TextField label="Updated By" value={form.updatedBy} onChange={updateField("updatedBy")} />
-          <TextField
-            label="Edit Password"
-            type="password"
-            value={form.password}
-            onChange={updateField("password")}
-            required
-          />
-        </div>
-
-        <button
-          className="mt-6 rounded-2xl bg-cyan-600 px-6 py-3 font-bold text-white disabled:cursor-not-allowed disabled:bg-slate-400"
-          disabled={!canSave}
-          type="submit"
-        >
-          {saving ? "Saving..." : "Save changes"}
-        </button>
-      </form>
+        submitLabel="Save changes"
+        submitting={saving}
+        submittingLabel="Saving..."
+      />
     </main>
   )
 }
-
-const TextField = ({ label, type = "text", ...props }) => (
-  <label className="block">
-    <span className="text-sm font-semibold text-slate-700">{label}</span>
-    <input className="mt-1 w-full rounded-xl border border-slate-300 p-3" type={type} {...props} />
-  </label>
-)
 
 export default EquipmentEdit

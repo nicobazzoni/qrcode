@@ -1,5 +1,6 @@
 // src/components/EquipmentList.jsx
 import React, { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import { client } from "./sanityClient"
 import { QRCodeCanvas } from "qrcode.react"
 
@@ -16,15 +17,24 @@ const EquipmentList = () => {
   return (
     <main className="min-h-screen bg-slate-950 px-4 py-10 text-slate-100">
       <section className="mx-auto max-w-5xl">
-        <div className="mb-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-300">
-            QR Directory
-          </p>
-          <h1 className="mt-3 text-4xl font-bold">Equipment QR Codes</h1>
-          <p className="mt-3 max-w-2xl text-slate-300">
-            Print these codes once. The equipment page behind each code can be
-            updated later without reprinting the QR label.
-          </p>
+        <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-300">
+              QR Directory
+            </p>
+            <h1 className="mt-3 text-4xl font-bold">Equipment QR Codes</h1>
+            <p className="mt-3 max-w-2xl text-slate-300">
+              Print these codes once. The equipment page behind each code can be
+              updated later without reprinting the QR label.
+            </p>
+          </div>
+
+          <Link
+            className="rounded-2xl bg-cyan-400 px-5 py-3 font-bold text-slate-950 shadow-lg shadow-cyan-950/30"
+            to="/equipment/new"
+          >
+            + Create QR page
+          </Link>
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

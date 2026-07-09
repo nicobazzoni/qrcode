@@ -103,6 +103,18 @@ const EquipmentDetail = () => {
 
   return (
     <main className="min-h-screen bg-slate-950 px-4 py-8 text-slate-100">
+      <div className="mx-auto mb-4 flex max-w-4xl flex-wrap items-center justify-between gap-3">
+        <Link className="text-sm font-semibold text-cyan-200 underline" to="/equipment">
+          ← All QR Codes
+        </Link>
+        <Link
+          className="rounded-xl bg-cyan-400 px-4 py-2 text-sm font-bold text-slate-950"
+          to="/equipment/new"
+        >
+          + Create
+        </Link>
+      </div>
+
       <article className="mx-auto max-w-4xl overflow-hidden rounded-[2rem] border border-slate-800 bg-white text-slate-950 shadow-2xl shadow-cyan-950/30">
         <header className="bg-gradient-to-br from-cyan-500 to-blue-700 p-8 text-white">
           <div className="flex flex-wrap items-start justify-between gap-4">

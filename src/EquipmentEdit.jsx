@@ -11,6 +11,9 @@ const emptyForm = {
   contactName: "",
   contactEmail: "",
   quickInstructions: "",
+  detailedNotes: "",
+  manualUrl: "",
+  manualLabel: "",
   updatedBy: "",
   password: "",
 }
@@ -38,7 +41,10 @@ const EquipmentEdit = () => {
           department,
           contactName,
           contactEmail,
-          quickInstructions
+          quickInstructions,
+          detailedNotes,
+          manualUrl,
+          manualLabel
         }`,
         { slug },
       )
@@ -57,6 +63,9 @@ const EquipmentEdit = () => {
           contactName: doc.contactName || "",
           contactEmail: doc.contactEmail || "",
           quickInstructions: doc.quickInstructions || "",
+          detailedNotes: doc.detailedNotes || "",
+          manualUrl: doc.manualUrl || "",
+          manualLabel: doc.manualLabel || "",
         }))
       })
       .catch((err) => {

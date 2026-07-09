@@ -11,6 +11,9 @@ const emptyForm = {
   contactName: "",
   contactEmail: "",
   quickInstructions: "",
+  detailedNotes: "",
+  manualUrl: "",
+  manualLabel: "",
   updatedBy: "",
   password: "",
 }

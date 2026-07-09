@@ -44,6 +44,9 @@ export default async function handler(req, res) {
     contactName = "",
     contactEmail = "",
     quickInstructions = "",
+    detailedNotes = "",
+    manualUrl = "",
+    manualLabel = "",
     updatedBy = "",
   } = req.body || {}
 
@@ -80,6 +83,9 @@ export default async function handler(req, res) {
     contactName: contactName.trim(),
     contactEmail: contactEmail.trim(),
     quickInstructions: quickInstructions.trim(),
+    detailedNotes: detailedNotes.trim(),
+    manualUrl: manualUrl.trim(),
+    manualLabel: manualLabel.trim(),
     lastUpdatedBy: updatedBy.trim(),
     lastUpdatedAt: new Date().toISOString(),
   })

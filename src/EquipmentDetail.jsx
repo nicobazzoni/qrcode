@@ -68,6 +68,9 @@ const EquipmentDetail = () => {
           contactName,
           contactEmail,
           quickInstructions,
+          detailedNotes,
+          manualUrl,
+          manualLabel,
           lastUpdatedAt,
           lastUpdatedBy,
           body
@@ -151,6 +154,37 @@ const EquipmentDetail = () => {
             <p className="mt-3 whitespace-pre-wrap text-lg leading-8 text-slate-800">
               {data.quickInstructions}
             </p>
+          </section>
+        )}
+
+        {(data.detailedNotes || data.manualUrl) && (
+          <section className="grid gap-4 border-b border-slate-200 p-6 md:grid-cols-2">
+            {data.detailedNotes && (
+              <div className="rounded-2xl bg-slate-100 p-5">
+                <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-slate-600">
+                  Detailed Notes
+                </h2>
+                <p className="mt-3 whitespace-pre-wrap leading-7 text-slate-800">
+                  {data.detailedNotes}
+                </p>
+              </div>
+            )}
+
+            {data.manualUrl && (
+              <div className="rounded-2xl bg-blue-50 p-5">
+                <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-blue-800">
+                  Manual / Document
+                </h2>
+                <a
+                  className="mt-3 inline-flex rounded-xl bg-blue-700 px-4 py-3 font-bold text-white"
+                  href={data.manualUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {data.manualLabel || "Open document"}
+                </a>
+              </div>
+            )}
           </section>
         )}
 

@@ -70,6 +70,32 @@ const EquipmentForm = ({
         />
       </label>
 
+      <label className="mt-4 block">
+        <span className="text-sm font-semibold text-slate-700">Detailed Notes</span>
+        <textarea
+          className="mt-1 min-h-48 w-full rounded-xl border border-slate-300 p-3"
+          value={form.detailedNotes}
+          onChange={updateField("detailedNotes")}
+          placeholder="Longer setup steps, known issues, storage instructions, replacement notes, etc."
+        />
+      </label>
+
+      <div className="mt-4 grid gap-4 md:grid-cols-2">
+        <TextField
+          label="Manual / Document URL"
+          type="url"
+          value={form.manualUrl}
+          onChange={updateField("manualUrl")}
+          placeholder="https://..."
+        />
+        <TextField
+          label="Manual / Document Label"
+          value={form.manualLabel}
+          onChange={updateField("manualLabel")}
+          placeholder="Open manual"
+        />
+      </div>
+
       <div className="mt-4 grid gap-4 md:grid-cols-2">
         <TextField label="Updated By" value={form.updatedBy} onChange={updateField("updatedBy")} />
         <TextField
